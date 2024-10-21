@@ -48,3 +48,11 @@ app.get('/crafts/premiumcrafts', craftController.getPremiumCrafts)
 app.post('/crafts/', craftController.createCraft)
 app.put('/crafts/:id', craftController.updateCraft)
 app.delete('/crafts/:id', craftController.deleteCraft)
+
+
+
+app.get('/crafts/:id/reviews', craftController.getCraftReviewById) //get all reviews
+app.post('/crafts/:id/reviews', craftController.addCraftReview) //to add new review
+app.put('/crafts/:id/reviews/:reviewId', craftController.updateCraftReview) //update a specific review
+app.delete('/crafts/:id/reviews/:reviewId', craftController.deleteCraftReview) //deletes specific review
+

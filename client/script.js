@@ -7,10 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const homeDecorBtn = document.querySelector('#home-decor')
     const kidsBtn = document.querySelector('#kids')
     const witchcraftBtn = document.querySelector('#witchcraft')
-    const resultsList = document.getElementById('#type-results-list')
-    const resultsContainer = document.getElementById('#type-results')
+    const resultsList = document.getElementById('type-results-list')
+    const resultsContainer = document.getElementById('type-results')
     const detailsContainer = document.getElementById('craft-details')
+    const craftItemDetails = document.getElementById('craft-item-details')
     const closeDetailsButton = document.getElementById('close-craft-details')
+
 
     // Function to handle button clicks
     const filterResultsByCraftType = async (craftTypeId) => {
@@ -28,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 filteredCrafts.forEach(craft => {
                     const resultItem = document.createElement('div')
                     resultItem.classList.add('result-item')
+                    resultItem.style.display = 'grid'
                     resultItem.innerHTML = `
                         <h6>${craft.craftName}</h6>
                         <img src="${craft.craftImg || ''}" alt="${craft.craftName}" />
@@ -97,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const craft = await response.json()
 
                 // Populate the details container with craft data
+                detailsContainer.style.display = 'grid'
                 document.getElementById('craftName').textContent = craft.craftName
                 document.getElementById('difficulty').textContent = craft.difficulty
                 document.getElementById('craftImg').src = craft.craftImg || ''
@@ -117,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const listItem = document.createElement('li')
 
                     //This sets the text for directions
-                    const directionText = document.createElement('span')
+                    const directionText = document.createElement('div')
                     directionText.textContent = `${direction.step} ${direction.direction}`
                     listItem.appendChild(directionText)
 
@@ -137,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const listItem = document.createElement('li')
 
                     //creating span for top text
-                    const reviewerRatingText = document.createElement('span')
+                    const reviewerRatingText = document.createElement('div')
                     reviewerRatingText.textContent = `${craftReview.reviewer} - ${craftReview.rating}`
 
                     //created div for review text
@@ -155,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 resultsContainer.classList.add('hidden')
                 detailsContainer.classList.remove('hidden')
             } catch (error) {
-                console.error('Error fetching product details:', error)
+                console.error('Error fetching craft details:', error)
             }
         }
     })
@@ -163,6 +167,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close details button
     closeDetailsButton.addEventListener('click', () => {
         detailsContainer.classList.add('hidden')
-        //resultsContainer.classList.remove('hidden') 
+        resultsContainer.classList.remove('hidden')
     })
 })

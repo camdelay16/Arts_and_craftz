@@ -171,6 +171,89 @@ const updateCraft = async (req,res) => {
     }
 }
 
+//Get Craft Review -
+const getCraftReviewById = async (req,res) => {
+    try { 
+        const { id } = req.params
+        const craft = await Craft.findById(id)
+        if (craft.craftReviews.length > 0) {
+            return res.json(craft.craftReviews)
+        }
+        return res.status(404).send('Craft reviews with that ID not found.')
+    } catch(e) {
+        return res.status(500).send(e.message)
+    }
+}
+
+//Add - Craft Review
+const addCraftReview = async (req, res) => {
+    try {
+        const { id } = req.params
+        const { reviewer, rating, review } = req.body
+
+        const craft = await Craft.findById(id)
+        if(!craft) {
+            return res.status(404).send('Craft not found')
+        }
+        const newReview = { reviewer, rating, review }
+        craft.craftReviews.push(newReview)
+
+        await craft.save()
+        return res.status(201).json(craft)
+    }
+    catch (e) {
+        return res.status(500).send(e.message)
+    }
+}
+
+//Update - Put
+const updateCraftReview = async (req,res) => {
+    try {
+        let { id, reviewId } = req.params
+        const { reviewer, rating, review } = req.body
+        let craft = await Craft.findById(id)
+        if (!craft) {
+            return res.status(404).send('Craft not found')
+        }
+        const indReview = craft.craftReviews.id(reviewId)
+        if(!indReview) {
+            return res.status(404).send('Review not found')
+        }
+
+        if (reviewer !== undefined) indReview.reviewer = reviewer
+        if (rating !== undefined) indReview.rating = rating
+        if (review !== undefined) indReview.review = review
+
+        await craft.save()
+        return res.status(200).json(craft)
+
+    } catch (e) {
+        return res.status(500).send(e.message)
+    }
+}
+
+//Delete Review
+const deleteCraftReview = async (req,res) => {
+    try {
+        const { id, reviewId } = req.params
+        const craft = await Craft.findById(id)
+        if (!craft) {
+            return res.status(404).send('Craft not found')
+        }
+        const review = craft.craftReviews.id(reviewId)
+        if(!review) {
+            return res.status(404).send('Review not found')
+        }
+        review.deleteOne()
+
+        await craft.save()
+        return res.status(200).json(craft)
+
+    } catch (e) {
+        return res.status(500).send(e.message)
+    }
+}
+
 //Delete - Delete
 const deleteCraft = async (req,res) => {
     try {
@@ -202,5 +285,9 @@ module.exports = {
     getPremiumCrafts,
     createCraft,
     updateCraft,
+    getCraftReviewById,
+    addCraftReview,
+    updateCraftReview,
+    deleteCraftReview,
     deleteCraft
 }
