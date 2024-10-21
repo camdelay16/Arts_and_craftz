@@ -1,11 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <link rel="stylesheet" href="style.css">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arts and Crafts</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script defer src="script.js"></script>
 </head>
+
 <body>
-    
+    <header>
+        <div>
+            <img src="" alt="logo" class="logo">
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Search Crafts" id="search">
+            <button id="search-btn">Get Craftin'</button>
+        </div>
+    </header>
+    <section class="craft-types">
+        <div class="types-title">
+            <h3 class="types-title">Crafts by Category</h3>
+        </div>
+        <div class="craft-types">
+            <div id="paint-draw" class="type-btn"><img src=""><span>Painting &#38; Drawing</span></div>
+            <div id="sculpture" class="type-btn"><img src=""><span>Sculpture</span></div>
+            <div id="textiles" class="type-btn"><img src=""><span>Textiles</span></div>
+            <div id="paper" class="type-btn"><img src=""><span>Paper Crafts</span></div>
+            <div id="jewelry" class="type-btn"><img src=""><span>Jewelry Making</span></div>
+            <div id="Home Decor" class="type-btn"><img src=""><span>Home Décor</span></div>
+            <div id="kids" class="type-btn"><img src=""><span>Kid's Crafts</span></div>
+            <div id="witchcraft" class="type-btn"><img src=""><span>Witchcraft</span></div>
+        </div>
+        <div id="type-results" class="hidden">
+            <div id="type-results-list">
+                <!-- type results will go here -->
+            </div>
+        </div>
+
+        <div id="craft-details" class="hidden">
+            <div class="craft-details-container">
+                <div class="craft-item-details">
+                    <h3 id="craftName"></h3>
+                    <img id="craftImg" src="">
+                    <h6 id="difficulty"></h6>
+                    <p id="description"></p>
+                    <h4 id="materials">Materials</h4>
+                    <ul id="materials-list"></ul>
+                    <h4 id="directions">Directions</h4>
+                    <ul id="directions-list"></ul>
+                    <div id="review container">
+                        <h4 id="reviews">Reviews</h4>
+                        <button id="add-review-btn">Add Review</button>
+                        <ul id="list-of-reviews"></ul>
+                    </div>
+                    <button id="close-craft-details">Close</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="featured-craft">
+        <div class="featured-craft-title">
+            <h3 class="craft-month-title">Crafts of the Month</h3>
+        </div>
+        <div class="featured-craft-img">
+            <img src="" alt="" class="featured-craft">
+            <img src="" alt="" class="featured-craft">
+            <img src="" alt="" class="featured-craft">
+            <img src="" alt="" class="featured-craft">
+        </div>
+    </section>
+    <footer>
+        <button>Contact Us</button>
+    </footer>
+
 </body>
+
 </html>
