@@ -15,17 +15,9 @@ const Craft = new Schema (
             unit: {type: Number},
             item: { type: String},
         }],
-        directions: [{ 
-            step: {type: Number, required: true},
-            direction: {type: String, required: true}
-        }],
-        youtubeLink: { type: String, required: true}, 
-        craftReviews: [{
-            reviewer: { type: String, required: true },
-            rating: { type: Number, required: true, min: 1, max: 5 },
-            review: { type: String, required: true }
-        }],
-        
+        directions: [{ step: {type: Number, required: true}, stepImg: {type: String}, direction: {type: String, required: true} }],
+        youtubeLink: { type: String}, 
+        craftReviews: [{ reviewer: { type: String, required: true }, rating: { type: Number, required: true, min: 1, max: 5 }, review: { type: String, required: true } }],
     },
     { timestamps: true }
 )
