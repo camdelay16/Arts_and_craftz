@@ -55,7 +55,7 @@ const updateType = async (req,res) => {
         let { id } = req.params
         let type = await Type.findByIdAndUpdate(id, req.body, { new: true })
         if (type) {
-            return res.status(200).json(brand)
+            return res.status(200).json(type)
         }
         throw new Error('Type not found.')
     } catch (e) {
