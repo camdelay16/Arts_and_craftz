@@ -47,49 +47,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Event listener for paint-draw btn
     paintDrawBtn.addEventListener('click', () => {
-        filterResultsBySupplyType('67159bf0c5f0b8a90eb3b0fb')
+        filterResultsByCraftType('67159bf0c5f0b8a90eb3b0fb')
     })
 
     // Event listener for sculpture
     sculptureBtn.addEventListener('click', () => {
-        filterResultsBySupplyType('67159bf0c5f0b8a90eb3b0fc')
+        filterResultsByCraftType('67159bf0c5f0b8a90eb3b0fc')
     })
 
     // Event listener for textiles btn
     textilesBtn.addEventListener('click', () => {
-        filterResultsBySupplyType('67159bf0c5f0b8a90eb3b0fd')
+        filterResultsByCraftType('67159bf0c5f0b8a90eb3b0fd')
     })
     
     // Event listener for paper
     paperBtn.addEventListener('click', () => {
-        filterResultsBySupplyType('67159bf0c5f0b8a90eb3b0fe')
+        filterResultsByCraftType('67159bf0c5f0b8a90eb3b0fe')
     })
 
     // Event listener for jewelry making
     jewelryBtn.addEventListener('click', () => {
-        filterResultsBySupplyType('67159bf0c5f0b8a90eb3b0ff')
+        filterResultsByCraftType('67159bf0c5f0b8a90eb3b0ff')
     })
         
     // Event listener for home decor button
     homeDecorBtn.addEventListener('click', () => {
-        filterResultsBySupplyType('67159bf0c5f0b8a90eb3b100')
+        filterResultsByCraftType('67159bf0c5f0b8a90eb3b100')
     })
 
     // Event listener for witchcrafts
     witchcraftBtn.addEventListener('click', () => {
-        filterResultsBySupplyType('67159bf0c5f0b8a90eb3b102')
+        filterResultsByCraftType('67159bf0c5f0b8a90eb3b102')
     })
             
     // Event listener for kids button
     kidsBtn.addEventListener('click', () => {
-        filterResultsBySupplyType('67159bf0c5f0b8a90eb3b101')
+        filterResultsByCraftType('67159bf0c5f0b8a90eb3b101')
     })
 
     // Event listener for craft details
     resultsList.addEventListener('click', async (e) => {
         if (e.target.classList.contains('view-craft-btn')) {
             const craftId = e.target.dataset.id
-            console.log('Details button clicked for craft ID:', productId)
+            console.log('Details button clicked for craft ID:', craftId)
 
             // Fetch the craft details
             try {
