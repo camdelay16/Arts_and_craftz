@@ -32,10 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     resultItem.classList.add('result-item')
                     resultItem.style.display = 'grid'
                     resultItem.innerHTML = `
-                        <h6>${craft.craftName}</h6>
-                        <img src="${craft.craftImg || ''}" alt="${craft.craftName}" />
-                        <p>${craft.tagline}</p>
-                        <button class="view-craft-btn" data-id="${craft._id}">Details</button>
+                        <div id='resultBackground'>
+                        <div id='resultNameContainer'><h6 id='resultName'>${craft.craftName}</h6></div>
+                        <div id='resultImgContainer'><img class='resultImg' src="${craft.craftImg || ''}" alt="${craft.craftName} " /></div>
+                        <p id='tagline'>${craft.tagline}</p>
+                        <div id='resultBtnContainer'><button class="view-craft-btn" data-id="${craft._id}">Details</button></div>
+                        </div>
                     `
                     resultsList.appendChild(resultItem)
                 })
