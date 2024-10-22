@@ -34,10 +34,15 @@ header {
 }
 
 #craft-types-buttons {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    justify-items: center;
-    align-items: center;
+    position: relative;
+    overflow: hidden;
+    margin: 20px;
+    width: 100%;
+}
+
+#carousel {
+    display: flex;
+    transition: transform 0.4s ease;
 }
 
 .type-btn-text {
@@ -100,11 +105,32 @@ header {
     border-radius: 5px;
     padding: 10px;
     margin: 10px;
-    width: 120px;
+    width: 300px;
     height: 120px;
     text-align: center;
     cursor:pointer;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    /* each button only takes up 20% */
+    flex: 1 0 20%;
+}
+
+#left-btn, #right-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #333;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 10;
+}
+
+#left-btn {
+    left: 10px;
+}
+
+#right-btn {
+    right: 10px;
 }
 
 .type-btn:hover {

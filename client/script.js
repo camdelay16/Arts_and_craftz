@@ -12,6 +12,40 @@ document.addEventListener('DOMContentLoaded', () => {
     const detailsContainer = document.getElementById('craft-details')
     const craftItemDetails = document.getElementById('craft-item-details')
     const closeDetailsButton = document.getElementById('close-craft-details')
+    const leftBtn = document.getElementById('left-btn')
+    const rightBtn = document.getElementById('right-btn')
+
+//carousel 
+    const typeBtn = document.querySelectorAll('.type-btn')
+    const totalBtns = typeBtn.length
+    const visibleBtns = 5
+    let btnIndex = 0
+
+    function showTypeBtn() {
+        if (btnIndex < 0) {
+            btnIndex = totalBtns - visibleBtns  //should loop to end
+        } else if (btnIndex > totalBtns - visibleBtns) {
+            btnIndex = 0 //should loop to start
+        }
+
+        const offset =  -btnIndex * (100/visibleBtns)
+        document.querySelector('#carousel').style.transform = `translateX(${offset}%)`
+    }
+
+    function moveTypeBtn(direction) {
+        btnIndex += direction; //adjusts based on direction clicked
+
+        if (btnIndex < 0) {
+            btnIndex = totalBtns - visibleBtns
+        } else if (btnIndex > totalBtns - visibleBtns) {
+            btnIndex = 0
+        }
+
+        showTypeBtn()
+    }
+
+    leftBtn.addEventListener('click', () => moveTypeBtn(-1))
+    rightBtn.addEventListener('click', () => moveTypeBtn(1))
 
 
     // Function to handle button clicks
