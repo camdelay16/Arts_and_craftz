@@ -130,6 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div id='resultNameContainer'><h6 id='resultName'>${craft.craftName}</h6></div>
                         <div id='resultImgContainer'><img class='resultImg' src="${craft.craftImg || ''}" alt="${craft.craftName} " /></div>
                         <p id='tagline'>${craft.tagline}</p>
+                        <div id='result-difficulty'>Difficulty: ${craft.difficulty}</div>
                         <div id='resultBtnContainer'><button class="view-craft-btn" data-id="${craft._id}">Details</button></div>
                         </div>
                     `
@@ -166,6 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div id='resultNameContainer'><h6 id='resultName'>${craft.craftName}</h6></div>
                         <div id='resultImgContainer'><img class='resultImg' src="${craft.craftImg || ''}" alt="${craft.craftName} " /></div>
                         <p id='tagline'>${craft.tagline}</p>
+                        <div id='result-difficulty'>Difficulty: ${craft.difficulty}</div>
                         <div id='resultBtnContainer'><button class="view-craft-btn" data-id="${craft._id}">Details</button></div>
                         </div>
                     `
@@ -234,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Populate the details container with craft data
                 detailsContainer.style.display = 'grid'
                 document.getElementById('craftName').textContent = craft.craftName
-                document.getElementById('difficulty').textContent = craft.difficulty
+                document.getElementById('difficulty').textContent = `Difficulty: ${craft.difficulty}`
                 document.getElementById('description').textContent = craft.description
                 document.getElementById('craftImg').src = craft.craftImg || ''
 
@@ -273,9 +275,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 craft.craftReviews.forEach(craftReview => {
                     const listItem = document.createElement('li')
 
+                    //creating stars for review
+                    let starRating = ''
+                    if (craftReview.rating === 1) {starRating = `⭐`} 
+                    else if (craftReview.rating === 2) {starRating = `⭐⭐`} 
+                    else if (craftReview.rating === 3) {starRating = `⭐⭐⭐`}
+                    else if (craftReview.rating === 4) {starRating = `⭐⭐⭐⭐`}
+                    else if (craftReview.rating === 5) {starRating = `⭐⭐⭐⭐⭐`}
+
                     //creating div for top text
                     const reviewerRatingText = document.createElement('div')
-                    reviewerRatingText.textContent = `${craftReview.reviewer} - ${craftReview.rating}`
+                    reviewerRatingText.textContent = `${craftReview.reviewer} - ${starRating}`
 
                     //created div for review text
                     const reviewText = document.createElement('div')
