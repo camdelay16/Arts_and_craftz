@@ -14,8 +14,67 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeDetailsButton = document.getElementById('close-craft-details')
     const leftBtn = document.getElementById('left-btn')
     const rightBtn = document.getElementById('right-btn')
+    const searchBtn = document.querySelector(`#search-btn`)
+    const search = document.querySelector(`#search`)
 
-//carousel 
+
+
+    //search feature
+    searchBtn.addEventListener(`click`, async () => {
+        await searchCrafts()
+    })
+    search.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') { searchCrafts() }
+    })
+
+    function clearSearch() {
+        search.value = "";
+    }
+
+//Search Crafts not working as intended will come back to fix
+
+    async function searchCrafts(searchText) {
+        resultsList.innerHTML = ''
+        detailsContainer.style.display = 'none'
+        try {
+            const url = 'http://localhost:3001/crafts/name/';
+            let searchText = search.value
+            console.log(searchText)
+            let response = await axios.get(`${url}${searchText}`)
+            console.log(response)
+
+            const crafts = await response.json()
+            resultsContainer.classList.remove('hidden')
+
+            if (crafts.length > 0) {
+                    const resultItem = document.createElement('div')
+                    resultItem.classList.add('result-item')
+                    resultItem.style.display = 'grid'
+                    resultItem.innerHTML = `
+                        <div id='resultBackground'>
+                        <div id='resultNameContainer'><h6 id='resultName'>${craft.craftName}</h6></div>
+                        <div id='resultImgContainer'><img class='resultImg' src="${craft.craftImg || ''}" alt="${craft.craftName} " /></div>
+                        <p id='tagline'>${craft.tagline}</p>
+                        <div id='resultBtnContainer'><button class="view-craft-btn" data-id="${craft._id}">Details</button></div>
+                        </div>
+                    `
+                    resultsList.appendChild(resultItem)
+            } else {
+                resultsList.innerHTML = '<p>No results found.</p>'
+            }
+            clearSearch()
+        }
+        catch (e) {
+            console.log(`Craft not found`)
+
+            detailsContainer.style.display = `none`
+            resultsContainer.style.display = `none`
+
+            clearSearch()
+        }
+    }
+
+    //carousel 
     const typeBtn = document.querySelectorAll('.type-btn')
     const totalBtns = typeBtn.length
     const visibleBtns = 5
@@ -23,12 +82,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showTypeBtn() {
         if (btnIndex < 0) {
-            btnIndex = totalBtns - visibleBtns  //should loop to end
+            btnIndex = totalBtns - visibleBtns  //loop to end
         } else if (btnIndex > totalBtns - visibleBtns) {
-            btnIndex = 0 //should loop to start
+            btnIndex = 0 //loop to start
         }
 
-        const offset =  -btnIndex * (100/visibleBtns)
+        const offset = -btnIndex * (100 / visibleBtns)
         document.querySelector('#carousel').style.transform = `translateX(${offset}%)`
     }
 
@@ -85,6 +144,42 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    const filterResultsForKids = async () => {
+        resultsList.innerHTML = ''
+        detailsContainer.style.display = 'none'
+        try {
+            const response = await fetch('http://localhost:3001/crafts')
+            const crafts = await response.json()
+
+            // Filter crafts by 
+            const filteredCrafts = crafts.filter(craft => craft.forKids === true)
+            resultsContainer.classList.remove('hidden')
+
+            // Check if there are crafts to display
+            if (filteredCrafts.length > 0) {
+                filteredCrafts.forEach(craft => {
+                    const resultItem = document.createElement('div')
+                    resultItem.classList.add('result-item')
+                    resultItem.style.display = 'grid'
+                    resultItem.innerHTML = `
+                        <div id='resultBackground'>
+                        <div id='resultNameContainer'><h6 id='resultName'>${craft.craftName}</h6></div>
+                        <div id='resultImgContainer'><img class='resultImg' src="${craft.craftImg || ''}" alt="${craft.craftName} " /></div>
+                        <p id='tagline'>${craft.tagline}</p>
+                        <div id='resultBtnContainer'><button class="view-craft-btn" data-id="${craft._id}">Details</button></div>
+                        </div>
+                    `
+                    resultsList.appendChild(resultItem)
+                })
+            } else {
+                resultsList.innerHTML = '<p>No results found.</p>'
+            }
+        } catch (error) {
+            console.error('Error fetching crafts:', error)
+            resultsList.innerHTML = '<p>Error fetching results. Please try again.</p>'
+        }
+    }
+
     // Event listener for paint-draw btn
     paintDrawBtn.addEventListener('click', () => {
         filterResultsByCraftType('67159bf0c5f0b8a90eb3b0fb')
@@ -99,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
     textilesBtn.addEventListener('click', () => {
         filterResultsByCraftType('67159bf0c5f0b8a90eb3b0fd')
     })
-    
+
     // Event listener for paper
     paperBtn.addEventListener('click', () => {
         filterResultsByCraftType('67159bf0c5f0b8a90eb3b0fe')
@@ -109,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
     jewelryBtn.addEventListener('click', () => {
         filterResultsByCraftType('67159bf0c5f0b8a90eb3b0ff')
     })
-        
+
     // Event listener for home decor button
     homeDecorBtn.addEventListener('click', () => {
         filterResultsByCraftType('67159bf0c5f0b8a90eb3b100')
@@ -119,10 +214,10 @@ document.addEventListener('DOMContentLoaded', () => {
     witchcraftBtn.addEventListener('click', () => {
         filterResultsByCraftType('67159bf0c5f0b8a90eb3b102')
     })
-            
+
     // Event listener for kids button
     kidsBtn.addEventListener('click', () => {
-        filterResultsByCraftType('67159bf0c5f0b8a90eb3b101')
+        filterResultsForKids()
     })
 
     // Event listener for craft details
@@ -142,11 +237,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('difficulty').textContent = craft.difficulty
                 document.getElementById('description').textContent = craft.description
                 document.getElementById('craftImg').src = craft.craftImg || ''
-                
+
                 //populating the details container with materials list with a loop
                 const materialsList = document.getElementById('materials-list')
                 materialsList.innerHTML = ""  // this clears out any text
-                craft.materials.forEach(material => {     
+                craft.materials.forEach(material => {
                     const listItem = document.createElement('li')
                     listItem.textContent = `${material.amount} ${material.unit} - ${material.item}`
                     materialsList.appendChild(listItem)
@@ -172,10 +267,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     directionsList.appendChild(listItem)
                 })
 
-                //populating the review container with materials list with a loop
+                //populating the review container with review list with a loop
                 const reviewsList = document.getElementById('reviews-list')
-                reviewsList.innerHTML = "" 
-                craft.craftReviews.forEach(craftReview => {     
+                reviewsList.innerHTML = ""
+                craft.craftReviews.forEach(craftReview => {
                     const listItem = document.createElement('li')
 
                     //creating div for top text

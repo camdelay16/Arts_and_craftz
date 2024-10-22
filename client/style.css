@@ -21,6 +21,12 @@ header {
     margin: 10px;
 }
 
+#blank {
+    background-color: #A1D6E2;
+    box-shadow: none;
+    cursor: default;
+}
+
 .craft-types-section {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
@@ -146,3 +152,9 @@ header {
     display: none;
 }
 
+
+
+.craft-details-container {
+    background-color: #F1F1F2;
+    border-radius: 25px;
+}
