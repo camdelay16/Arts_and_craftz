@@ -35,7 +35,7 @@ header {
     align-items: center;
 }
 
-.craft-types span {
+.type-btn-text {
     color: white;
     font-weight: bold;
 }
@@ -98,6 +98,16 @@ header {
     width: 120px;
     height: 120px;
     text-align: center;
+    cursor:pointer;
+}
+
+.type-btn:hover {
+    background-color: white;
+
+}
+
+.type-btn-text:hover {
+    color: rgb(56, 56, 56);
 }
 
 .hidden {

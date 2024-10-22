@@ -17,15 +17,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to handle button clicks
     const filterResultsByCraftType = async (craftTypeId) => {
         resultsList.innerHTML = ''
+        detailsContainer.style.display = 'none'
         try {
             const response = await fetch('http://localhost:3001/crafts/')
             const crafts = await response.json()
 
-            // Filter products by supplyType
+            // Filter crafts by supplyType
             const filteredCrafts = crafts.filter(craft => craft.craftType_id === craftTypeId)
             resultsContainer.classList.remove('hidden')
 
-            // Check if there are products to display
+            // Check if there are crafts to display
             if (filteredCrafts.length > 0) {
                 filteredCrafts.forEach(craft => {
                     const resultItem = document.createElement('div')
@@ -105,6 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 detailsContainer.style.display = 'grid'
                 document.getElementById('craftName').textContent = craft.craftName
                 document.getElementById('difficulty').textContent = craft.difficulty
+                document.getElementById('description').textContent = craft.description
                 document.getElementById('craftImg').src = craft.craftImg || ''
                 
                 //populating the details container with materials list with a loop
@@ -112,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 materialsList.innerHTML = ""  // this clears out any text
                 craft.materials.forEach(material => {     
                     const listItem = document.createElement('li')
-                    listItem.textContent = `${material.amount} ${material.unit} ${material.item}`
+                    listItem.textContent = `${material.amount} ${material.unit} - ${material.item}`
                     materialsList.appendChild(listItem)
                 })
 
@@ -124,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     //This sets the text for directions
                     const directionText = document.createElement('div')
-                    directionText.textContent = `${direction.step} ${direction.direction}`
+                    directionText.textContent = `${direction.step} - ${direction.direction}`
                     listItem.appendChild(directionText)
 
                     //This sets the image for the step (if there is one)
@@ -142,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 craft.craftReviews.forEach(craftReview => {     
                     const listItem = document.createElement('li')
 
-                    //creating span for top text
+                    //creating div for top text
                     const reviewerRatingText = document.createElement('div')
                     reviewerRatingText.textContent = `${craftReview.reviewer} - ${craftReview.rating}`
 
@@ -170,5 +172,6 @@ document.addEventListener('DOMContentLoaded', () => {
     closeDetailsButton.addEventListener('click', () => {
         detailsContainer.classList.add('hidden')
         resultsContainer.classList.remove('hidden')
+        detailsContainer.style.display = 'none'
     })
 })
