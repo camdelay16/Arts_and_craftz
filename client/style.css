@@ -230,6 +230,10 @@ header {
     display: none;
 }
 
+.hidden-always {
+    display: none;
+}
+
 
 
 .craft-details-container {
@@ -314,7 +318,6 @@ align-self: center;
 
 #add-review-btn {
     width: 90px;
-
 }
 
 #search-btn:hover, .view-craft-btn:hover, #close-craft-details:hover, #add-review-btn:hover, #post-review:hover, #cancel-post:hover {

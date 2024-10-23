@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let response = await axios.get(`${url}${searchText}`)
             console.log(response)
 
-            const crafts = await response.json()
+            const crafts = response.json()
             resultsContainer.classList.remove('hidden')
 
             if (crafts.length > 0) {
@@ -71,10 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         catch (e) {
             console.log(`Craft not found`)
-
-            detailsContainer.style.display = `none`
-            resultsContainer.style.display = `none`
-
             clearSearch()
         }
     }
@@ -244,6 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('difficulty').textContent = `Difficulty: ${craft.difficulty}`
                 document.getElementById('description').textContent = craft.description
                 document.getElementById('craftImg').src = craft.craftImg || ''
+                document.getElementById('craft-id').textContent = craft._id
 
                 //populating the details container with materials list with a loop
                 const materialsList = document.getElementById('materials-list')
@@ -309,6 +306,75 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch (error) {
                 console.error('Error fetching craft details:', error)
             }
+        }
+    })
+
+    const getUpdatedReviews = async (craftId) => {
+        try {
+            const response = await axios.get(`http://localhost:3001/crafts/${craftId}/reviews`)
+            const reviewsList = document.getElementById('reviews-list')
+            reviewsList.innerHTML = ""
+
+            response.data.forEach(review => {
+                const listItem = document.createElement('li')
+                let starRating = ``
+
+                if (review.rating === 1) {starRating = `⭐`} 
+                else if (review.rating === 2) {starRating = `⭐⭐`} 
+                else if (review.rating === 3) {starRating = `⭐⭐⭐`}
+                else if (review.rating === 4) {starRating = `⭐⭐⭐⭐`}
+                else if (review.rating === 5) {starRating = `⭐⭐⭐⭐⭐`}
+
+                const reviewerRatingText = document.createElement('div')
+                reviewerRatingText.textContent = `${review.reviewer} - ${starRating}`
+
+                const reviewText = document.createElement('div')
+                reviewText.textContent = review.review
+
+                listItem.appendChild(reviewerRatingText)
+                listItem.appendChild(reviewText)
+
+                reviewsList.appendChild(listItem)
+            })
+        } catch (error) {
+            console.error('error getting updated reviews', error)
+        }
+    }
+
+    postReview.addEventListener ('click', async() => {
+        const craftId = document.getElementById('craft-id').textContent
+        const reviewerName = document.getElementById('reviewer-name').value
+        const reviewRating = document.getElementById('reviewer-rating').value
+        const reviewText = document.getElementById('reviewer-review').value
+
+        if(!reviewerName || !reviewRating || !reviewText) {
+            alert('HEY! Please fill in all fields.')
+            return
+        }
+
+        const reviewInfo = {
+            reviewer: reviewerName,
+            rating: reviewRating,
+            review: reviewText
+        }
+
+        try {
+            const response = await axios.post(`http://localhost:3001/crafts/${craftId}/reviews`, reviewInfo)
+            console.log("Added Review", response.data)
+
+            document.getElementById('reviewer-name').value = ''
+            document.getElementById('reviewer-rating').value = ''
+            document.getElementById('reviewer-review').value = ''
+
+            addReviewInput.classList.add('hidden')
+            closeDetailsButton.classList.remove('hidden')
+            reviewContainer.classList.remove('hidden')
+
+            getUpdatedReviews(craftId)
+
+        } catch (error) {
+            console.error('error adding review', error)
+            alert('Could not add review. Please try again.')
         }
     })
     
