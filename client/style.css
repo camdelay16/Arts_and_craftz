@@ -52,6 +52,7 @@ header {
 }
 
 .type-btn-text {
+    margin-top: 5px;
     color: white;
     font-weight: bold;
 }
@@ -70,6 +71,7 @@ header {
 }
 
 #craftImg {
+    width: 100%;
     max-width: 500px;
 }
 
@@ -104,14 +106,15 @@ header {
 
 .type-btn {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-end;
     align-items: center;
     background-color: rgb(56, 56, 56);
     color: white;
     border-radius: 5px;
     padding: 10px;
     margin: 10px;
-    width: 300px;
+    width: 120px;
     height: 120px;
     text-align: center;
     cursor:pointer;
@@ -120,15 +123,22 @@ header {
     flex: 1 0 20%;
 }
 
+.type-btn-img {
+    flex: 1;
+    max-width: 100%;
+    height: auto;
+}
+
 #left-btn, #right-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: #333;
+    background-color: #269f6b58;
     border: none;
     cursor: pointer;
     padding: 10px;
     z-index: 10;
+    border-radius: 10px;
 }
 
 #left-btn {
@@ -157,4 +167,24 @@ header {
 .craft-details-container {
     background-color: #F1F1F2;
     border-radius: 25px;
+    margin: 30px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+li img {
+    max-width: 300px;
+    margin: 20px;
+}
+
+li {
+    list-style-type: none;
+    margin: 5px;
+}
+
+.craft-header {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
 }

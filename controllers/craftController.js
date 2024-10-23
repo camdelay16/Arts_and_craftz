@@ -196,7 +196,7 @@ const addCraftReview = async (req, res) => {
             return res.status(404).send('Craft not found')
         }
         const newReview = { reviewer, rating, review }
-        craft.craftReviews.push(newReview)
+        craft.craftReviews.unshift(newReview)
 
         await craft.save()
         return res.status(201).json(craft)

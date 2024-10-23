@@ -32,51 +32,40 @@
         <div class="craft-types" id="craft-types-buttons">
             <div id="carousel">
                 <div id="paint-draw" class="type-btn">
-                    <img src="">
-                    <div class='type-btn-text'>
-                        <span class='type-btn-text'>Painting &#38; Drawing</span>
-                    </div>
+                    <img src="/client/images/PaintAndDraw.png" class="type-btn-img">
+                    <span class='type-btn-text'>Painting &#38; Drawing</span>
                 </div>
                 <div id="sculpture" class="type-btn">
-                    <img src="">
-                    <div class='type-btn-text'>
-                        <span class='type-btn-text'>Sculpture</span>
-                    </div>
+                    <img src="/client/images/sculpture.png" class="type-btn-img">
+                    <span class='type-btn-text'>Sculpture</span>
                 </div>
                 <div id="textiles" class="type-btn">
-                    <img src="">
-                    <div class='type-btn-text'>
-                        <span class='type-btn-text'>Textiles</span>
-                    </div>
+                    <img src="/client/images/textiles.png" class="type-btn-img">
+                    <span class='type-btn-text'>Textiles</span>
                 </div>
                 <div id="paper" class="type-btn">
-                    <img src="">
-                    <div class='type-btn-text'>
-                        <span class='type-btn-text'>Paper Crafts</span>
-                    </div>
+                    <img src="/client/images/papercrafts.png" class="type-btn-img">
+                    <span class='type-btn-text'>Paper Crafts</span>
                 </div>
                 <div id="jewelry" class="type-btn">
-                    <img src="">
-                    <div class='type-btn-text'>
-                        <span class='type-btn-text'>Jewelry Making</span>
-                    </div>
+                    <img src="/client/images/jewelrymaking.png" class="type-btn-img">
+                    <span class='type-btn-text'>Jewelry Making</span>
                 </div>
                 <div id="home-decor" class="type-btn">
-                    <img src="">
-                    <div class='type-btn-text'>
-                        <span class='type-btn-text'>Home Décor</span>
-                    </div>
+                    <img src="/client/images/homedecor.png" class="type-btn-img">
+                    <span class='type-btn-text'>Home Décor</span>
                 </div>
                 <div id="kids" class="type-btn">
-                    <img src="">
-                    <div class='type-btn-text'>
-                        <span class='type-btn-text'>Kid's Crafts</span>
-                    </div>
+                    <img src="/client/images/KidsCrafts.png" class="type-btn-img">
+                    <span class='type-btn-text'>Kid's Crafts</span>
                 </div>
                 <div id="witchcraft" class="type-btn">
+                    <img src="/client/images/witchcraft.png" class="type-btn-img">
+                    <span class='type-btn-text'>Witchcraft</span>
+                </div>
+                <div id="blank" class="type-btn">
                     <img src="">
                     <div class='type-btn-text'>
-                        <span class='type-btn-text'>Witchcraft</span>
                     </div>
                 </div>
                 <div id="blank" class="type-btn">
@@ -97,14 +86,22 @@
         <div id="craft-details" class="hidden">
             <div class="craft-details-container">
                 <div class="craft-item-details">
-                    <h3 id="craftName"></h3>
-                    <img id="craftImg" src="">
-                    <h6 id="difficulty"></h6>
-                    <p id="description"></p>
-                    <h4 id="materials">Materials</h4>
-                    <ul id="materials-list"></ul>
-                    <h4 id="directions">Directions</h4>
-                    <ul id="directions-list"></ul>
+                    <div class="craft-header">
+                        <img id="craftImg" src="">
+                        <div>
+                            <h3 id="craftName"></h3>
+                            <h6 id="difficulty"></h6>
+                            <p id="description"></p>
+                        </div>
+                    </div>
+                    <div class="materials">
+                        <h4 id="materials">Materials</h4>
+                        <ul id="materials-list"></ul>
+                    </div>
+                    <div class="directions">
+                        <h4 id="directions">Directions</h4>
+                        <ul id="directions-list"></ul>
+                    </div>
                     <div id="review-container">
                         <h4 id="reviews">Reviews</h4>
                         <button id="add-review-btn">Add Review</button>
