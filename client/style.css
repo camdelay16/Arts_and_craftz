@@ -7,18 +7,67 @@ body {
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
     align-items: center;
     width: 100%;
+    height: 150px;
     background-color: #1995AD;
     padding: 10px 20px;
+    gap: 10px;
 }
-
+#logo-container{
+    width: 100%;
+    max-width: 200px;
+    grid-column: 1/2;
+}
 .logo {
     max-width: 200px;
     max-height: 150px;
     margin: 10px;
+}
+
+#title-byline {
+    grid-column: 2/4;
+    justify-self: center;
+    align-self: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 75px); 
+    margin-top: 20px;
+}
+
+#search {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    border-width: 1px;
+}
+
+.search-container {
+    grid-column: 4/5;
+    justify-self: center;
+    align-self: center;
+}
+
+#page-title {
+    font-family: "Rubik Gemstones", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 50px;
+  justify-self: center;
+  align-self: center;
+}
+
+#page-byline {
+    font-family: "Gamja Flower", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    justify-self: center;
+    align-self: center;
+    font-size: 35px;
+    margin-top: 10px;
 }
 
 #blank {
@@ -54,7 +103,10 @@ header {
 .type-btn-text {
     margin-top: 5px;
     color: white;
+    background-color: #33333341;
     font-weight: bold;
+    max-height: 30px;
+    top: 50%; 
 }
 
 #types-title {
@@ -111,11 +163,13 @@ header {
     align-items: center;
     background-color: rgb(56, 56, 56);
     color: white;
-    border-radius: 5px;
+    border-radius: 25px;
     padding: 10px;
-    margin: 10px;
-    width: 120px;
-    height: 120px;
+    margin: 20px;
+    width: 100%;
+    height: 100%;
+    max-width: 250px;
+    max-height: 250px;
     text-align: center;
     cursor:pointer;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
@@ -125,20 +179,23 @@ header {
 
 .type-btn-img {
     flex: 1;
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    max-width: 200px;
+    border-radius: 25px;
+    object-fit: cover;
 }
 
 #left-btn, #right-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: #269f6b58;
+    background-color: #269f6bab;
+    color: #F1F1F2;
     border: none;
     cursor: pointer;
     padding: 10px;
     z-index: 10;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 #left-btn {
@@ -147,6 +204,17 @@ header {
 
 #right-btn {
     right: 10px;
+}
+
+
+#left-btn:hover, #right-btn:hover {
+    background-color: #e4ece8ab;
+    color: #269f6b;
+}
+
+#left-btn:active, #right-btn:active {
+    background-color: #269f6bab;
+    color: #F1F1F2;
 }
 
 .type-btn:hover {
@@ -215,6 +283,7 @@ li {
     justify-content: center;
     justify-self: center;
     align-self: center;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .featured-craft-pic {
@@ -231,3 +300,75 @@ align-self: center;
 .featured-craft-background:hover {
     transform: scale(1.1)
 } 
+
+#search-btn, .view-craft-btn, #close-craft-details, #add-review-btn, #post-review, #cancel-post {
+    border-radius: 10px;
+    border: none;
+    background-color: aquamarine;
+    color: #333;
+    padding: 8px;
+    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+    margin: 5px;
+    width: 90px;
+}
+
+#add-review-btn {
+    width: 90px;
+
+}
+
+#search-btn:hover, .view-craft-btn:hover, #close-craft-details:hover, #add-review-btn:hover, #post-review:hover, #cancel-post:hover {
+    background-color: #333;
+    color: aquamarine;
+}
+
+#search-btn:active, .view-craft-btn:active, #close-craft-details:active, #add-review-btn:active, #post-review:active, #cancel-post:active {
+    background-color: aquamarine;
+    color: #333;
+}
+
+#add-review-background {
+    background-color: #F1F1F2;
+    display: flex;
+    flex-direction: column; 
+    gap: 10px; 
+    margin: 20px;
+    padding: 20px;
+    padding-left: 30px;
+    padding-right: 40px;
+    border-radius: 25px;
+}
+
+.label-container {
+    text-align: left; 
+    max-width: 150px;
+    flex: 0 0 150px; 
+}
+
+#reviewer-name-cont, #reviewer-rating-cont, #reviewer-review-cont {
+    display: flex; 
+    align-items: center; 
+}
+
+#reviewer-name, #reviewer-rating {
+    flex: 1; 
+    margin: 10px 0; 
+    max-width: 120px; 
+    width: 100%;
+    padding: 4px 8px; 
+    font-size: 14px;
+    margin: 10px 0;
+    border-width: 1px;
+    border-radius: 10px; 
+
+}
+
+#reviewer-review {
+    width: 100%; 
+    margin: 10px 0;
+    border-radius: 10px;
+}
+
+
+
+

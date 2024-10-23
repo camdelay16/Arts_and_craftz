@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //carousel 
     const typeBtn = document.querySelectorAll('.type-btn')
     const totalBtns = typeBtn.length
-    const visibleBtns = 5
+    const visibleBtns = 4.5
     let btnIndex = 0
 
     function showTypeBtn() {
