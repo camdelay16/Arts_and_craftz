@@ -16,6 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const rightBtn = document.getElementById('right-btn')
     const searchBtn = document.querySelector(`#search-btn`)
     const search = document.querySelector(`#search`)
+    const addReviewBtn = document.querySelector('.add-review-btn')
+    const addReviewInput = document.getElementById('add-review-input')
+    const cancelPost = document.getElementById('cancel-post')
+    const postReview = document.getElementById('post-review')
+    const reviewContainer = document.getElementById('review-container')
 
 
 
@@ -305,6 +310,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error('Error fetching craft details:', error)
             }
         }
+    })
+    
+    addReviewBtn.addEventListener('click', () => {
+        addReviewInput.classList.remove('hidden')
+        closeDetailsButton.classList.add('hidden')
+        reviewContainer.classList.add('hidden')
+    })
+
+    cancelPost.addEventListener('click', () => {
+        addReviewInput.classList.add('hidden')
+        closeDetailsButton.classList.remove('hidden')
+        reviewContainer.classList.remove('hidden')
     })
 
     // Close details button

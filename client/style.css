@@ -328,7 +328,7 @@ align-self: center;
 }
 
 #add-review-background {
-    background-color: #F1F1F2;
+    background-color: #78babccc;
     display: flex;
     flex-direction: column; 
     gap: 10px; 
