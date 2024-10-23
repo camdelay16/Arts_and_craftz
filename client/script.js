@@ -395,5 +395,6 @@ document.addEventListener('DOMContentLoaded', () => {
         detailsContainer.classList.add('hidden')
         resultsContainer.classList.remove('hidden')
         detailsContainer.style.display = 'none'
+        document.body.scrollTop = document.documentElement.scrollTop = 0; //used to go to top of page on close
     })
 })
