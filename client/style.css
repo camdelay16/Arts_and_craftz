@@ -251,18 +251,80 @@ header {
 /* Craft details section */
 .details-section-background {
     background-color: #A1D6E2;
+    border-radius: 25px;
+    padding: 10px;
+    margin: 10px;
+    color: #373636;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.directions, .materials {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.details-section-title {
+    margin: 10px;
+    justify-self: start;
+    align-self: center;
+}
+
+#materials-list{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-right: 30px;
+}
+
+.material-text {
+    padding: 5px;
+}
+
+.direction-text {
+    margin: 10px;
+    padding: 5px;
+    display: flex;
+    justify-self: start;
+}
+
+.step-img {
+    border-radius: 10px;
+}
+
+#directions-list {
+    margin-right: 30px;
 }
 
 #craftImg {
     width: 100%;
-    max-width: 500px;
+    max-width: 425px;
+    max-height: 425px;
+    margin: 20px;
+    border-radius: 10px;
+    justify-self: center;
+    align-self: center;
 }
+
+.craft-header-details {
+    margin: 20px;
+    padding: 10px;
+}
+
+/* #craft-img-container {
+    width: 100%;
+    max-width: 500px;
+    max-height: 500px;
+    border-radius: 10px;
+    margin: 20px;
+    justify-self: center;
+    align-self: center;
+    background-color: #1995AD;
+} */
 
 .craft-details-container {
     background-color: #F1F1F2;
     border-radius: 25px;
     margin: 30px;
-    padding: 20px;
+    padding: 30px;
     display: grid;
     grid-template-columns: 1fr;
 }
@@ -281,6 +343,27 @@ li {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+}
+
+.review-header {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    
+}
+
+#reviews-list{
+    list-style-type: none;
+    margin-right: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.review-text {
+    margin: 5px;
+    padding: 5px;
+    display: flex;
+    justify-self: start;
+    align-self: center;
 }
 
 
@@ -354,6 +437,8 @@ li {
 
 #add-review-btn {
     width: 90px;
+    justify-self: end;
+    align-self: center;
 }
 
 #search-btn:hover,

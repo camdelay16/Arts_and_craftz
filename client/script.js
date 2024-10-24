@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const rightBtn = document.getElementById('right-btn')
     const searchBtn = document.querySelector(`#search-btn`)
     const search = document.querySelector(`#search`)
-    const addReviewBtn = document.querySelector('.add-review-btn')
+    const addReviewBtn = document.querySelector('#add-review-btn')
     const addReviewInput = document.getElementById('add-review-input')
     const cancelPost = document.getElementById('cancel-post')
     const postReview = document.getElementById('post-review')
@@ -341,7 +341,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 materialsList.innerHTML = ""  // this clears out any text
                 craft.materials.forEach(material => {
                     const listItem = document.createElement('li')
-                    listItem.textContent = `${material.amount} ${material.unit} - ${material.item}`
+                    listItem.classList.add('details-section-background')
+
+                    const materialsText = document.createElement('div')
+                    materialsText.classList.add('material-text')
+
+                    materialsText.textContent = `${material.amount} ${material.unit} - ${material.item}`
+
+                    listItem.appendChild(materialsText)
                     materialsList.appendChild(listItem)
                 })
 
@@ -350,15 +357,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 directionsList.innerHTML = ""
                 craft.directions.forEach(direction => {
                     const listItem = document.createElement('li')
+                    listItem.classList.add('details-section-background')
 
                     //This sets the text for directions
                     const directionText = document.createElement('div')
+                    directionText.classList.add('direction-text')
                     directionText.textContent = `${direction.step} - ${direction.direction}`
                     listItem.appendChild(directionText)
 
                     //This sets the image for the step (if there is one)
                     if (direction.stepImg) {
                         const img = document.createElement('img')
+                        img.classList.add('step-img')
                         img.src = direction.stepImg
                         listItem.appendChild(img)
                     }
@@ -382,10 +392,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     //creating div for top text
                     const reviewerRatingText = document.createElement('div')
+                    reviewerRatingText.classList.add('review-text')
                     reviewerRatingText.textContent = `${craftReview.reviewer} - ${starRating}`
 
                     //created div for review text
                     const reviewText = document.createElement('div')
+                    reviewText.classList.add('review-text')
                     reviewText.textContent = craftReview.review
 
                     //combining text
