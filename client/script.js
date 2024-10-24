@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resultsList.innerHTML = ''
         detailsContainer.style.display = 'none'
         try {
-            const url = 'http://localhost:3001/crafts/name/';
+            const url = 'http://localhost:5500/crafts/name/';
             let searchText = search.value
             console.log(searchText)
             let response = await axios.get(`${url}${searchText}`)
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resultsList.innerHTML = ''
         detailsContainer.style.display = 'none'
         try {
-            const response = await fetch('http://localhost:3001/crafts/')
+            const response = await fetch('http://localhost:5500/crafts/')
             const crafts = await response.json()
 
             // Filter crafts by supplyType
@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resultsList.innerHTML = ''
         detailsContainer.style.display = 'none'
         try {
-            const response = await fetch('http://localhost:3001/crafts')
+            const response = await fetch('http://localhost:5500/crafts')
             const crafts = await response.json()
 
             // Filter crafts by 
@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Fetch the craft details
             try {
-                const response = await fetch(`http://localhost:3001/crafts/${craftId}`)
+                const response = await fetch(`http://localhost:5500/crafts/${craftId}`)
                 const craft = await response.json()
 
                 // Populate the details container with craft data
@@ -311,7 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const getUpdatedReviews = async (craftId) => {
         try {
-            const response = await axios.get(`http://localhost:3001/crafts/${craftId}/reviews`)
+            const response = await axios.get(`http://localhost:5500/crafts/${craftId}/reviews`)
             const reviewsList = document.getElementById('reviews-list')
             reviewsList.innerHTML = ""
 
@@ -359,7 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const response = await axios.post(`http://localhost:3001/crafts/${craftId}/reviews`, reviewInfo)
+            const response = await axios.post(`http://localhost:5500/crafts/${craftId}/reviews`, reviewInfo)
             console.log("Added Review", response.data)
 
             document.getElementById('reviewer-name').value = ''
