@@ -370,6 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 reviewsList.innerHTML = ""
                 craft.craftReviews.forEach(craftReview => {
                     const listItem = document.createElement('li')
+                    listItem.classList.add('details-section-background')
 
                     //creating stars for review
                     let starRating = ''
