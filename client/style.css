@@ -1,5 +1,5 @@
 body {
-    margin: 0;
+    margin: 0px;
     padding: 0;
     font-family: 'Arial', sans-serif;
     background-color: #A1D6E2;
@@ -17,11 +17,13 @@ header {
     padding: 10px 20px;
     gap: 10px;
 }
-#logo-container{
+
+#logo-container {
     width: 100%;
     max-width: 200px;
     grid-column: 1/2;
 }
+
 .logo {
     max-width: 200px;
     max-height: 150px;
@@ -34,7 +36,7 @@ header {
     align-self: center;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, 75px); 
+    grid-template-rows: repeat(2, 75px);
     margin-top: 20px;
 }
 
@@ -53,11 +55,11 @@ header {
 
 #page-title {
     font-family: "Rubik Gemstones", serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 50px;
-  justify-self: center;
-  align-self: center;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 50px;
+    justify-self: center;
+    align-self: center;
 }
 
 #page-byline {
@@ -83,7 +85,7 @@ header {
     justify-content: space-around;
     align-items: center;
     text-align: center;
-    margin: 20px 0;
+    margin: 20px 0px;
     padding: 10px;
     background-color: #A1D6E2;
 }
@@ -106,7 +108,7 @@ header {
     background-color: #33333341;
     font-weight: bold;
     max-height: 30px;
-    top: 50%; 
+    top: 50%;
 }
 
 #types-title {
@@ -144,6 +146,11 @@ header {
     font-size: 12px;
 }
 
+#result-difficulty {
+    font-size: 12px;
+    margin: 10px;
+}
+
 .result-item {
     justify-content: center;
     align-items: center;
@@ -171,7 +178,7 @@ header {
     max-width: 250px;
     max-height: 250px;
     text-align: center;
-    cursor:pointer;
+    cursor: pointer;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     /* each button only takes up 20% */
     flex: 1 0 20%;
@@ -185,7 +192,8 @@ header {
     object-fit: cover;
 }
 
-#left-btn, #right-btn {
+#left-btn,
+#right-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -207,12 +215,14 @@ header {
 }
 
 
-#left-btn:hover, #right-btn:hover {
+#left-btn:hover,
+#right-btn:hover {
     background-color: #e4ece8ab;
     color: #269f6b;
 }
 
-#left-btn:active, #right-btn:active {
+#left-btn:active,
+#right-btn:active {
     background-color: #269f6bab;
     color: #F1F1F2;
 }
@@ -268,7 +278,7 @@ li {
 
 .featured-craft-img {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     margin: 10px;
 }
@@ -278,8 +288,8 @@ li {
     border-radius: 25px;
     width: 100%;
     height: 100%;
-    max-width: 425px;
-    max-height: 425px;
+    max-width: 325px;
+    max-height: 325px;
     padding: 10px;
     margin: 20px;
     display: flex;
@@ -291,21 +301,26 @@ li {
 }
 
 .featured-craft-pic {
-width: 100%;
-height: 100%;
-max-width: 400px;
-max-height: 400px;
-border-radius: 25px;
-object-fit: cover;
-justify-self: center;
-align-self: center;
+    width: 100%;
+    height: 100%;
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 25px;
+    object-fit: cover;
+    justify-self: center;
+    align-self: center;
 }
 
 .featured-craft-background:hover {
     transform: scale(1.1)
-} 
+}
 
-#search-btn, .view-craft-btn, #close-craft-details, #add-review-btn, #post-review, #cancel-post {
+#search-btn,
+.view-craft-btn,
+#close-craft-details,
+#add-review-btn,
+#post-review,
+#cancel-post {
     border-radius: 10px;
     border: none;
     background-color: aquamarine;
@@ -320,12 +335,22 @@ align-self: center;
     width: 90px;
 }
 
-#search-btn:hover, .view-craft-btn:hover, #close-craft-details:hover, #add-review-btn:hover, #post-review:hover, #cancel-post:hover {
+#search-btn:hover,
+.view-craft-btn:hover,
+#close-craft-details:hover,
+#add-review-btn:hover,
+#post-review:hover,
+#cancel-post:hover {
     background-color: #333;
     color: aquamarine;
 }
 
-#search-btn:active, .view-craft-btn:active, #close-craft-details:active, #add-review-btn:active, #post-review:active, #cancel-post:active {
+#search-btn:active,
+.view-craft-btn:active,
+#close-craft-details:active,
+#add-review-btn:active,
+#post-review:active,
+#cancel-post:active {
     background-color: aquamarine;
     color: #333;
 }
@@ -333,8 +358,8 @@ align-self: center;
 #add-review-background {
     background-color: #78babccc;
     display: flex;
-    flex-direction: column; 
-    gap: 10px; 
+    flex-direction: column;
+    gap: 10px;
     margin: 20px;
     padding: 20px;
     padding-left: 30px;
@@ -343,35 +368,66 @@ align-self: center;
 }
 
 .label-container {
-    text-align: left; 
+    text-align: left;
     max-width: 150px;
-    flex: 0 0 150px; 
+    flex: 0 0 150px;
 }
 
-#reviewer-name-cont, #reviewer-rating-cont, #reviewer-review-cont {
-    display: flex; 
-    align-items: center; 
+#reviewer-name-cont,
+#reviewer-rating-cont,
+#reviewer-review-cont {
+    display: flex;
+    align-items: center;
 }
 
-#reviewer-name, #reviewer-rating {
-    flex: 1; 
-    margin: 10px 0; 
-    max-width: 120px; 
+#reviewer-name,
+#reviewer-rating {
+    flex: 1;
+    margin: 10px 0;
+    max-width: 120px;
     width: 100%;
-    padding: 4px 8px; 
+    padding: 4px 8px;
     font-size: 14px;
     margin: 10px 0;
     border-width: 1px;
-    border-radius: 10px; 
-
+    border-radius: 10px;
 }
 
 #reviewer-review {
-    width: 100%; 
+    width: 100%;
     margin: 10px 0;
     border-radius: 10px;
 }
 
+footer {
+    background-color: #33333355;
+    margin-top: 30px;
+    margin-bottom: 0;
+}
 
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 30px;
+    margin-bottom: 0;
+}
 
+.footer-info {
+    margin: 10px;
+    gap: 5px;
+    justify-self: center;
+    align-self: center;
+}
 
+.footer-text {
+    font-size: 16px;
+    padding: 10px;
+}
+
+.footer-text:hover {
+    text-shadow: rgb(236, 231, 212) 1px 0 10px;
+}
+
+#app-text {
+    grid-column: 4/6;
+}

@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const homeDecorBtn = document.querySelector('#home-decor')
     const kidsBtn = document.querySelector('#kids')
     const witchcraftBtn = document.querySelector('#witchcraft')
+    const allCraftsBtn = document.querySelector('#allcraft')
+    const premiumBtn = document.querySelector('#premium')
+    const addYourOwnBtn = document.querySelector('#addcraft')
     const resultsList = document.getElementById('type-results-list')
     const resultsContainer = document.getElementById('type-results')
     const detailsContainer = document.getElementById('craft-details')
@@ -36,22 +39,25 @@ document.addEventListener('DOMContentLoaded', () => {
         search.value = "";
     }
 
-//Search Crafts not working as intended will come back to fix
+    //Search Crafts not working as intended will come back to fix
 
     async function searchCrafts(searchText) {
         resultsList.innerHTML = ''
         detailsContainer.style.display = 'none'
         try {
-            const url = 'http://localhost:5500/crafts/name/';
+
             let searchText = search.value
             console.log(searchText)
-            let response = await axios.get(`${url}${searchText}`)
+            const url = `http://localhost:5500/crafts/name/${searchText}`;
+            let response = await fetch(url)
             console.log(response)
+            const crafts = await response.json()
 
-            const crafts = response.json()
+            const filteredCrafts = crafts.filter(craft => craft.craftName.toLowerCase().includes(searchText.toLowerCase())) //inclusive of lowercase
             resultsContainer.classList.remove('hidden')
 
-            if (crafts.length > 0) {
+            if (filteredCrafts.length > 0) {
+                filteredCrafts.forEach(craft => {
                     const resultItem = document.createElement('div')
                     resultItem.classList.add('result-item')
                     resultItem.style.display = 'grid'
@@ -64,14 +70,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     `
                     resultsList.appendChild(resultItem)
+                })
             } else {
                 resultsList.innerHTML = '<p>No results found.</p>'
             }
             clearSearch()
-        }
-        catch (e) {
-            console.log(`Craft not found`)
-            clearSearch()
+        } catch {
+            console.error('Error fetching crafts:', error);
+            resultsList.innerHTML = '<p>No results found.</p>'
         }
     }
 
@@ -183,6 +189,80 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    const filterResultsForPremium = async () => {
+        resultsList.innerHTML = ''
+        detailsContainer.style.display = 'none'
+        try {
+            const response = await fetch('http://localhost:5500/crafts')
+            const crafts = await response.json()
+
+            // Filter crafts by 
+            const filteredCrafts = crafts.filter(craft => craft.premiumMembership === true)
+            resultsContainer.classList.remove('hidden')
+
+            // Check if there are crafts to display
+            if (filteredCrafts.length > 0) {
+                filteredCrafts.forEach(craft => {
+                    const resultItem = document.createElement('div')
+                    resultItem.classList.add('result-item')
+                    resultItem.style.display = 'grid'
+                    resultItem.innerHTML = `
+                        <div id='resultBackground'>
+                        <div id='resultNameContainer'><h6 id='resultName'>${craft.craftName}</h6></div>
+                        <div id='resultImgContainer'><img class='resultImg' src="${craft.craftImg || ''}" alt="${craft.craftName} " /></div>
+                        <p id='tagline'>${craft.tagline}</p>
+                        <div id='result-difficulty'>Difficulty: ${craft.difficulty}</div>
+                        <div id='resultBtnContainer'><button class="view-craft-btn" data-id="${craft._id}">Details</button></div>
+                        </div>
+                    `
+                    resultsList.appendChild(resultItem)
+                })
+            } else {
+                resultsList.innerHTML = '<p>No results found.</p>'
+            }
+        } catch (error) {
+            console.error('Error fetching crafts:', error)
+            resultsList.innerHTML = '<p>Error fetching results. Please try again.</p>'
+        }
+    }
+
+    const getAllCrafts = async () => {
+        resultsList.innerHTML = ''
+        detailsContainer.style.display = 'none'
+        try {
+            const response = await fetch('http://localhost:5500/crafts')
+            const crafts = await response.json()
+
+            // Filter crafts by 
+            const filteredCrafts = crafts
+            resultsContainer.classList.remove('hidden')
+
+            // Check if there are crafts to display
+            if (filteredCrafts.length > 0) {
+                filteredCrafts.forEach(craft => {
+                    const resultItem = document.createElement('div')
+                    resultItem.classList.add('result-item')
+                    resultItem.style.display = 'grid'
+                    resultItem.innerHTML = `
+                        <div id='resultBackground'>
+                        <div id='resultNameContainer'><h6 id='resultName'>${craft.craftName}</h6></div>
+                        <div id='resultImgContainer'><img class='resultImg' src="${craft.craftImg || ''}" alt="${craft.craftName} " /></div>
+                        <p id='tagline'>${craft.tagline}</p>
+                        <div id='result-difficulty'>Difficulty: ${craft.difficulty}</div>
+                        <div id='resultBtnContainer'><button class="view-craft-btn" data-id="${craft._id}">Details</button></div>
+                        </div>
+                    `
+                    resultsList.appendChild(resultItem)
+                })
+            } else {
+                resultsList.innerHTML = '<p>No results found.</p>'
+            }
+        } catch (error) {
+            console.error('Error fetching crafts:', error)
+            resultsList.innerHTML = '<p>Error fetching results. Please try again.</p>'
+        }
+    }
+
     // Event listener for paint-draw btn
     paintDrawBtn.addEventListener('click', () => {
         filterResultsByCraftType('67159bf0c5f0b8a90eb3b0fb')
@@ -222,6 +302,20 @@ document.addEventListener('DOMContentLoaded', () => {
     kidsBtn.addEventListener('click', () => {
         filterResultsForKids()
     })
+
+    // Event listener for premium button
+    premiumBtn.addEventListener('click', () => {
+        filterResultsForPremium()
+    })
+
+    // Event listener for all crafts button
+    allCraftsBtn.addEventListener('click', () => {
+        getAllCrafts()
+    })
+
+    // Event listener for add crafts button
+    // addYourOwnBtn.addEventListener('click', () => {
+    // })
 
     // Event listener for craft details
     resultsList.addEventListener('click', async (e) => {
@@ -279,11 +373,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     //creating stars for review
                     let starRating = ''
-                    if (craftReview.rating === 1) {starRating = `⭐`} 
-                    else if (craftReview.rating === 2) {starRating = `⭐⭐`} 
-                    else if (craftReview.rating === 3) {starRating = `⭐⭐⭐`}
-                    else if (craftReview.rating === 4) {starRating = `⭐⭐⭐⭐`}
-                    else if (craftReview.rating === 5) {starRating = `⭐⭐⭐⭐⭐`}
+                    if (craftReview.rating === 1) { starRating = `⭐` }
+                    else if (craftReview.rating === 2) { starRating = `⭐⭐` }
+                    else if (craftReview.rating === 3) { starRating = `⭐⭐⭐` }
+                    else if (craftReview.rating === 4) { starRating = `⭐⭐⭐⭐` }
+                    else if (craftReview.rating === 5) { starRating = `⭐⭐⭐⭐⭐` }
 
                     //creating div for top text
                     const reviewerRatingText = document.createElement('div')
@@ -319,11 +413,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const listItem = document.createElement('li')
                 let starRating = ``
 
-                if (review.rating === 1) {starRating = `⭐`} 
-                else if (review.rating === 2) {starRating = `⭐⭐`} 
-                else if (review.rating === 3) {starRating = `⭐⭐⭐`}
-                else if (review.rating === 4) {starRating = `⭐⭐⭐⭐`}
-                else if (review.rating === 5) {starRating = `⭐⭐⭐⭐⭐`}
+                if (review.rating === 1) { starRating = `⭐` }
+                else if (review.rating === 2) { starRating = `⭐⭐` }
+                else if (review.rating === 3) { starRating = `⭐⭐⭐` }
+                else if (review.rating === 4) { starRating = `⭐⭐⭐⭐` }
+                else if (review.rating === 5) { starRating = `⭐⭐⭐⭐⭐` }
 
                 const reviewerRatingText = document.createElement('div')
                 reviewerRatingText.textContent = `${review.reviewer} - ${starRating}`
@@ -341,13 +435,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    postReview.addEventListener ('click', async() => {
+    postReview.addEventListener('click', async () => {
         const craftId = document.getElementById('craft-id').textContent
         const reviewerName = document.getElementById('reviewer-name').value
         const reviewRating = document.getElementById('reviewer-rating').value
         const reviewText = document.getElementById('reviewer-review').value
 
-        if(!reviewerName || !reviewRating || !reviewText) {
+        if (!reviewerName || !reviewRating || !reviewText) {
             alert('HEY! Please fill in all fields.')
             return
         }
@@ -377,7 +471,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Could not add review. Please try again.')
         }
     })
-    
+
     addReviewBtn.addEventListener('click', () => {
         addReviewInput.classList.remove('hidden')
         closeDetailsButton.classList.add('hidden')
