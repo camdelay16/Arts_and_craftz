@@ -17,7 +17,7 @@ const Craft = new Schema (
         }],
         directions: [{ step: {type: Number, required: true}, stepImg: {type: String}, direction: {type: String, required: true} }],
         youtubeLink: { type: String}, 
-        craftReviews: [{ reviewer: { type: String, required: true }, rating: { type: Number, required: true, min: 1, max: 5 }, review: { type: String, required: true } }],
+        craftReviews: [{ reviewer: { type: String, required: false }, rating: { type: Number, required: false, min: 1, max: 5 }, review: { type: String, required: false } }],
     },
     { timestamps: true }
 )

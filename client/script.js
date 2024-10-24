@@ -314,8 +314,9 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     // Event listener for add crafts button
-    // addYourOwnBtn.addEventListener('click', () => {
-    // })
+    addYourOwnBtn.addEventListener('click', () => {
+        window.location.href = 'addcraft.html'
+    })
 
     // Event listener for craft details
     resultsList.addEventListener('click', async (e) => {

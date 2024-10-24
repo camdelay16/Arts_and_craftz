@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Gamja+Flower&family=Rubik+Gemstones&family=Wellfleet&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Your Craft Here!</title>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script defer src="addcraftscript.js"></script>
+</head>
+
+<body>
+    <header>
+        <div id="logo-container">
+            <img src="https://i.imgur.com/VC7hlta.png" alt="logo" class="logo">
+        </div>
+        <div id="title-byline">
+            <h2 id="page-title">Craftopia</h2>
+            <h4 id="page-byline">Find Your Craft</h4>
+        </div>
+    </header>
+    <button id="main-page" onclick="window.location.href='/'">Back To Main Page</button>
+    <section class="addcraft">
+        <div class="types-title">
+            <h3 id="types-title">Add Your Craft Below</h3>
+        </div>
+
+        <div id="add-review-input">
+            <div id="add-review-background">
+                <div id="reviewer-name-cont">
+                    <div class="label-container">
+                        <label for="name" class="review-label">Craft Name: </label>
+                    </div>
+                    <input type="text" name="name" id="craft-name" autocapitalize="on" autocomplete="name">
+                </div>
+                <div id="add-type-container">
+                    <div class="label-container">
+                        <label for="type" class="review-label">Craft Type: </label>
+                    </div>
+                    <select name="type" id="craft-type">
+                        <option value="67159bf0c5f0b8a90eb3b0fb">Painting and Drawing</option>
+                        <option value="67159bf0c5f0b8a90eb3b0fc">Sculpture</option>
+                        <option value="67159bf0c5f0b8a90eb3b0fd">Textiles</option>
+                        <option value="67159bf0c5f0b8a90eb3b0fe">Paper Crafts</option>
+                        <option value="67159bf0c5f0b8a90eb3b0ff">Jewelry Making</option>
+                        <option value="67159bf0c5f0b8a90eb3b100">Home Decor</option>
+                        <option value="67159bf0c5f0b8a90eb3b102">Witchcraft</option>
+                    </select>
+                </div>
+                <div id="add-tagline-container">
+                    <div class="label-container">
+                        <label for="tagline" class="review-label">Tagline: </label>
+                    </div>
+                    <input type="text" name="tagline" id="craft-tagline" autocapitalize="on" autocomplete="name">
+                </div>
+                <div id="add-difficulty-container">
+                    <div class="label-container">
+                        <label for="difficulty" class="review-label">Craft Difficulty: </label>
+                    </div>
+                    <select name="craft-difficulty" id="craft-difficulty">
+                        <option value="Easy">Easy</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Hard">Hard</option>
+                        <option value="Expert">Expert</option>
+                    </select>
+                </div>
+                <div id="add-premium-container">
+                    <div class="label-container">
+                        <label for="premium-membership" class="review-label">Require Premium Membership: </label>
+                    </div>
+                    <select name="craft-membership" id="craft-membership">
+                        <option value="false">No</option>
+                        <option value="true">Yes</option>
+                    </select>
+                </div>
+                <div id="add-craft-img-container">
+                    <div class="label-container">
+                        <label for="craft-img" class="review-label">Craft Image: </label>
+                    </div>
+                    <input type="file" id="image-upload" name="image-upload" style="display: none;">
+                    <button id="upload-button">Choose Image</button>
+                </div>
+                <div id="add-description-container">
+                    <div class="label-container">
+                        <label for="description" class="review-label">Description: </label>
+                    </div>
+                    <textarea name="description" id="craft-description"></textarea>
+                </div>
+                <div id="add-for-kids-container">
+                    <div class="label-container">
+                        <label for="for-kids" class="review-label">For Kids: </label>
+                    </div>
+                    <select name="for-kids" id="craft-for-kids">
+                        <option value="false">No</option>
+                        <option value="true">Yes</option>
+                    </select>
+                </div>
+                <div id="add-youtube-link-container">
+                    <div class="label-container">
+                        <label for="youtube-link" class="review-label">YouTube Link: </label>
+                    </div>
+                    <input type="text" name="youtube-link" id="craft-youtube-link">
+                </div>
+                <div id="add-materials-container">
+                    <div class="label-container">
+                        <label for="materials" class="review-label">Materials: </label>
+                    </div>
+                    <div class="material-input-container">
+                        <div>
+                            <input type="number" name="material-amount" id="material-amount" placeholder="Amount">
+                            <input type="text" name="material-unit" id="material-unit" placeholder="Unit">
+                            <input type="text" name="material-item" id="material-item" placeholder="Item">
+                        </div>
+                        <button id="add-material">Add Material</button>
+                    </div>
+                    <ul id="material-list"></ul>
+                </div>
+                <div id="add-directions-container">
+                    <div class="label-container">
+                        <label for="directions" class="review-label">Directions: </label>
+                    </div>
+                    <div class="direction-input-container">
+                        <div>
+                            <input type="number" name="direction-step" id="direction-step" placeholder="Step">
+                            <input type="text" name="direction-description" id="direction-description" placeholder="Description">
+                            <input type="file" name="direction-image" id="direction-image" style="display: none;">
+                            <button id="upload-direction-image-button">Choose Image</button>
+                            <button id="add-direction">Add Direction</button>
+                        </div>
+                    </div>
+                    <ol id="direction-list"></ol>
+                </div>
+            </div>
+
+</body>
+
+</html>
