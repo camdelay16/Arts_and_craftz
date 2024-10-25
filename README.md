@@ -5,13 +5,13 @@ Do you ever want to make some art and crafts but don't know where to start? Tire
 
 ## ERD
 
-![ERD](image-1.png)
+![ERD](ERD.png)
 
 I want my crafts and types to be seperate collections. Types will be the parent of Crafts. My reviews will be embedded documents within the Craft data and not a seperate collection. Materials and Directions will also be embedded documents within the craft data. 
 
 
 ## Display
-![Design](image.png)
+![Design](Wireframe.png)
 
 I would like my craft types and some other filters to appear as rotating buttons on a carousel. When clicking the button the craft type's collection of crafts should appear on the page. You can then click a craft of your choice and the details will appear. In this details section there will be a review section at the bottom with a button to add reviews. A new div or page should appear to add review. Review should appear after user posts.
 
