@@ -24,7 +24,7 @@ I would like my craft types and some other filters to appear as rotating buttons
 
 ## Challenges
 - **Seeding data:** Needed to address issue of certain fields being required.
-- **Carousel:**Getting the carousel to display all buttons
+- **Carousel:** Getting the carousel to display all buttons
 - **Class/ID Optimization:** Getting into the CSS and mixing Classes and IDs
 - **Correctly Posting Review:** Thinking through how I would pull the craftID to link to review to properly post. 
 
