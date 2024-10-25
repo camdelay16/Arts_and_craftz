@@ -32,7 +32,7 @@ I would like my craft types and some other filters to appear as rotating buttons
 Throughout the development process, I have gained valuable insights, including:
 
 - Mastering innerHTML and dynamic element creation in JavaScript.
-- Divs are incredible. 
+- Divs are **incredible**. 
 - Linking to other HTML pages and new HTML form elements
 - How to loop through divs to create a carousel effect
 - The importance of utilizing classes in CSS to reduce redundancy and enhance maintainability.
