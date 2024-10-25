@@ -81,6 +81,7 @@ header {
     justify-self: center;
     align-self: center;
     letter-spacing: .5rem;
+    color: #5e2880;
 }
 
 #page-byline {
@@ -91,6 +92,7 @@ header {
     align-self: center;
     font-size: 25px;
     margin-top: 10px;
+    color: #F1F1F2;
 }
 
 /* Craft types section and carousel */
