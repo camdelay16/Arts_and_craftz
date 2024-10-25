@@ -38,9 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function clearSearch() {
         search.value = "";
     }
-
-    //Search Crafts not working as intended will come back to fix
-
+    
     async function searchCrafts(searchText) {
         resultsList.innerHTML = ''
         detailsContainer.style.display = 'none'
