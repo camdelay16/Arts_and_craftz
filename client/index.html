@@ -1,227 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Gamja+Flower&family=Rubik+Gemstones&family=Wellfleet&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
 
-<head>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Gamja+Flower&family=Rubik+Gemstones&family=Wellfleet&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Arts and Crafts</title>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script defer src="script.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <div id="logo-container">
-            <img src="https://i.imgur.com/VC7hlta.png" alt="logo" class="logo">
-        </div>
-        <div id="title-byline">
-            <h2 id="page-title">Craftopia</h2>
-            <h4 id="page-byline">Find Your Craft</h4>
-        </div>
-        <div class="search-container">
-            <input type="text" placeholder="Search Crafts" id="search" autocomplete="on">
-            <button id="search-btn">Get Craftin'</button>
-        </div>
+      <div id="logo-container">
+        <img src="https://i.imgur.com/VC7hlta.png" alt="logo" class="logo" />
+      </div>
+      <div id="title-byline">
+        <h2 id="page-title">Craftopia</h2>
+        <h4 id="page-byline">Find Your Craft</h4>
+      </div>
+      <div class="search-container">
+        <input
+          type="text"
+          placeholder="Search Crafts"
+          id="search"
+          autocomplete="on"
+        />
+        <button id="search-btn">Get Craftin'</button>
+      </div>
     </header>
     <section class="craft-types-section">
-        <div class="types-title">
-            <h3 id="types-title">Crafts by Category</h3>
+      <div class="types-title">
+        <h3 id="types-title">Crafts by Category</h3>
+      </div>
+      <div class="craft-types" id="craft-types-buttons">
+        <div id="carousel">
+          <div id="allcraft" class="type-btn">
+            <img src="https://i.imgur.com/3hUlZDt.png" class="type-btn-img" />
+            <span class="type-btn-text">All Crafts</span>
+          </div>
+          <div id="paint-draw" class="type-btn">
+            <img src="https://i.imgur.com/gaZQqSa.png" class="type-btn-img" />
+            <span class="type-btn-text">Painting &#38; Drawing</span>
+          </div>
+          <div id="sculpture" class="type-btn">
+            <img src="https://i.imgur.com/T4051t7.png" class="type-btn-img" />
+            <span class="type-btn-text">Sculpture</span>
+          </div>
+          <div id="textiles" class="type-btn">
+            <img src="https://i.imgur.com/ZY07YCI.png" class="type-btn-img" />
+            <span class="type-btn-text">Textiles</span>
+          </div>
+          <div id="paper" class="type-btn">
+            <img src="https://i.imgur.com/nJL382r.png" class="type-btn-img" />
+            <span class="type-btn-text">Paper Crafts</span>
+          </div>
+          <div id="jewelry" class="type-btn">
+            <img src="https://i.imgur.com/XzLb99V.png" class="type-btn-img" />
+            <span class="type-btn-text">Jewelry Making</span>
+          </div>
+          <div id="home-decor" class="type-btn">
+            <img src="https://i.imgur.com/Jl3alm4.png" class="type-btn-img" />
+            <span class="type-btn-text">Home Décor</span>
+          </div>
+          <div id="kids" class="type-btn">
+            <img src="https://i.imgur.com/lhYYJOu.png" class="type-btn-img" />
+            <span class="type-btn-text">Kid's Crafts</span>
+          </div>
+          <div id="witchcraft" class="type-btn">
+            <img src="https://i.imgur.com/KA4OO5r.png" class="type-btn-img" />
+            <span class="type-btn-text">Witchcraft</span>
+          </div>
+          <div id="premium" class="type-btn">
+            <img src="https://i.imgur.com/kmqHa9h.png" class="type-btn-img" />
+            <span class="type-btn-text">Premium Crafts</span>
+          </div>
+          <div id="addcraft" class="type-btn">
+            <img src="https://i.imgur.com/pCKXE1d.png" class="type-btn-img" />
+            <span class="type-btn-text">Add Your Own!</span>
+          </div>
+          <div id="blank" class="type-btn">
+            <img src="" />
+            <div class="type-btn-text"></div>
+          </div>
+          <div id="blank" class="type-btn">
+            <img src="" />
+            <div class="type-btn-text"></div>
+          </div>
         </div>
-        <div class="craft-types" id="craft-types-buttons">
-            <div id="carousel">
-                <div id="allcraft" class="type-btn">
-                    <img src="https://i.imgur.com/3hUlZDt.png" class="type-btn-img">
-                    <span class='type-btn-text'>All Crafts</span>
-                </div>
-                <div id="paint-draw" class="type-btn">
-                    <img src="https://i.imgur.com/gaZQqSa.png" class="type-btn-img">
-                    <span class='type-btn-text'>Painting &#38; Drawing</span>
-                </div>
-                <div id="sculpture" class="type-btn">
-                    <img src="https://i.imgur.com/T4051t7.png" class="type-btn-img">
-                    <span class='type-btn-text'>Sculpture</span>
-                </div>
-                <div id="textiles" class="type-btn">
-                    <img src="https://i.imgur.com/ZY07YCI.png" class="type-btn-img">
-                    <span class='type-btn-text'>Textiles</span>
-                </div>
-                <div id="paper" class="type-btn">
-                    <img src="https://i.imgur.com/nJL382r.png" class="type-btn-img">
-                    <span class='type-btn-text'>Paper Crafts</span>
-                </div>
-                <div id="jewelry" class="type-btn">
-                    <img src="https://i.imgur.com/XzLb99V.png" class="type-btn-img">
-                    <span class='type-btn-text'>Jewelry Making</span>
-                </div>
-                <div id="home-decor" class="type-btn">
-                    <img src="https://i.imgur.com/Jl3alm4.png" class="type-btn-img">
-                    <span class='type-btn-text'>Home Décor</span>
-                </div>
-                <div id="kids" class="type-btn">
-                    <img src="https://i.imgur.com/lhYYJOu.png" class="type-btn-img">
-                    <span class='type-btn-text'>Kid's Crafts</span>
-                </div>
-                <div id="witchcraft" class="type-btn">
-                    <img src="https://i.imgur.com/KA4OO5r.png" class="type-btn-img">
-                    <span class='type-btn-text'>Witchcraft</span>
-                </div>
-                <div id="premium" class="type-btn">
-                    <img src="https://i.imgur.com/kmqHa9h.png" class="type-btn-img">
-                    <span class='type-btn-text'>Premium Crafts</span>
-                </div>
-                <div id="addcraft" class="type-btn">
-                    <img src="https://i.imgur.com/pCKXE1d.png" class="type-btn-img">
-                    <span class='type-btn-text'>Add Your Own!</span>
-                </div>
-                <div id="blank" class="type-btn">
-                    <img src="">
-                    <div class='type-btn-text'>
-                    </div>
-                </div>
-                <div id="blank" class="type-btn">
-                    <img src="">
-                    <div class='type-btn-text'>
-                    </div>
-                </div>
-            </div>
-            <button id="left-btn">&#171;</button>
-            <button id="right-btn">&#187;</button>
+        <button id="left-btn">&#171;</button>
+        <button id="right-btn">&#187;</button>
+      </div>
+      <div id="type-results" class="hidden">
+        <div id="type-results-list" display="grid">
+          <!-- type results will go here -->
         </div>
-        <div id="type-results" class="hidden">
-            <div id="type-results-list" display="grid">
-                <!-- type results will go here -->
-            </div>
-        </div>
+      </div>
 
-        <!-- craft details -->
-        <div id="craft-details" class="hidden">
-            <div class="craft-details-container">
-                <div class="craft-item-details">
-                    <div class="craft-header">
-                        <div id="craft-img-container">
-                            <div id="craft-img-boarder">
-                            <img id="craftImg" src="">
-                        </div>
-                        </div>
-                        <div class="craft-header-details">
-                            <h3 id="craftName"></h3>
-                            <h6 id="difficulty"></h6>
-                            <p id="description"></p>
-                        </div>
-                    </div>
-                    <div class="materials">
-                        <div class="details-section-title">
-                            <h4 id="materials">Materials</h4>
-                        </div>
-                        <ul id="materials-list"></ul>
-                    </div>
-                    <div class="directions">
-                        <div class="details-section-title">
-                            <h4 id="directions">Directions</h4>
-                        </div>
-                              <ul id="directions-list"></ul>
-  
-                    </div>
-                    <div id="review-container">
-                        <div class="review-header">
-                            <div class="details-section-title">
-                                <h4 id="reviews">Reviews</h4>
-                            </div>
-                            <button class="add-review-btn" id="add-review-btn">Add Review</button>
-                        </div>
-                        <ul id="reviews-list"></ul>
-                        <button id="close-craft-details">Close</button>
-                    </div>
-                    <!-- Add Review Section -->
-                    <div id="add-review-input" class="hidden">
-                        <div id="add-review-background">
-                            <div id="reviewer-name-cont">
-                                <div class="label-container">
-                                    <label for="name" class="review-label">Name: </label>
-                                </div>
-                                <input type="text" name="name" id="reviewer-name" autocapitalize="on"
-                                    autocomplete="name">
-                            </div>
-                            <div id="reviewer-rating-cont">
-                                <div class="label-container">
-                                    <label for="rating" class="review-label">Rating (1-5): </label>
-                                </div>
-                                <input type="number" min="1" max="5" name="rating" id="reviewer-rating">
-                            </div>
-                            <div id="reviewer-review-cont">
-                                <div class="label-container"><label for="review" class="review-label">Review: </label>
-                                </div>
-                                <textarea name="review" id="reviewer-review"></textarea>
-                            </div>
-                            <p id="craft-id" class="hidden-always"></p>
-                            <div id="review-btns">
-                                <button id="post-review">Post</button>
-                                <button id="cancel-post">Cancel</button>
-                            </div>
-                        </div>
-                    </div>
-
+      <!-- craft details -->
+      <div id="craft-details" class="hidden">
+        <div class="craft-details-container">
+          <div class="craft-item-details">
+            <div class="craft-header">
+              <div id="craft-img-container">
+                <div id="craft-img-boarder">
+                  <img id="craftImg" src="" />
                 </div>
+              </div>
+              <div class="craft-header-details">
+                <h3 id="craftName"></h3>
+                <h6 id="difficulty"></h6>
+                <p id="description"></p>
+              </div>
             </div>
-
+            <div class="materials">
+              <div class="details-section-title">
+                <h4 id="materials">Materials</h4>
+              </div>
+              <ul id="materials-list"></ul>
+            </div>
+            <div class="directions">
+              <div class="details-section-title">
+                <h4 id="directions">Directions</h4>
+              </div>
+              <ul id="directions-list"></ul>
+            </div>
+            <div id="review-container">
+              <div class="review-header">
+                <div class="details-section-title">
+                  <h4 id="reviews">Reviews</h4>
+                </div>
+                <button class="add-review-btn" id="add-review-btn">
+                  Add Review
+                </button>
+              </div>
+              <ul id="reviews-list"></ul>
+              <button id="close-craft-details">Close</button>
+            </div>
+            <!-- Add Review Section -->
+            <div id="add-review-input" class="hidden">
+              <div id="add-review-background">
+                <div id="reviewer-name-cont">
+                  <div class="label-container">
+                    <label for="name" class="review-label">Name: </label>
+                  </div>
+                  <input
+                    type="text"
+                    name="name"
+                    id="reviewer-name"
+                    autocapitalize="on"
+                    autocomplete="name"
+                  />
+                </div>
+                <div id="reviewer-rating-cont">
+                  <div class="label-container">
+                    <label for="rating" class="review-label"
+                      >Rating (1-5):
+                    </label>
+                  </div>
+                  <input
+                    type="number"
+                    min="1"
+                    max="5"
+                    name="rating"
+                    id="reviewer-rating"
+                  />
+                </div>
+                <div id="reviewer-review-cont">
+                  <div class="label-container">
+                    <label for="review" class="review-label">Review: </label>
+                  </div>
+                  <textarea name="review" id="reviewer-review"></textarea>
+                </div>
+                <p id="craft-id" class="hidden-always"></p>
+                <div id="review-btns">
+                  <button id="post-review">Post</button>
+                  <button id="cancel-post">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
     <section class="featured-craft">
-        <div class="featured-craft-title">
-            <h3 class="craft-month-title">Crafts of the Month</h3>
+      <div class="featured-craft-title">
+        <h3 class="craft-month-title">Crafts of the Month</h3>
+      </div>
+      <div class="featured-craft-img-container">
+        <div class="featured-craft-img">
+          <div class="featured-craft-background">
+            <img
+              src="https://i0.wp.com/ohclary.com/wp-content/uploads/fall-wreath-2.jpg?resize=600%2C603&ssl=1"
+              alt=""
+              class="featured-craft-pic"
+            />
+          </div>
+          <div class="featured-craft-background">
+            <img
+              src="https://m.media-amazon.com/images/I/81uZp9TmCpL.jpg"
+              alt=""
+              class="featured-craft-pic"
+            />
+          </div>
+          <div class="featured-craft-background">
+            <img
+              src="https://content.prod.lovecrafts.co/lovecrafts/83e8adc2-81bf-4df7-ac58-89729f3cbdf7_Thanksgiving-Table-Paper-Pumpkins.webp?auto=compress,format&rect=0,0,749,498&w=635&h=422"
+              alt=""
+              class="featured-craft-pic"
+            />
+          </div>
+          <div class="featured-craft-background">
+            <img
+              src="https://media.licdn.com/dms/image/D5612AQH4KOaS-wVWVw/article-cover_image-shrink_600_2000/0/1693632036481?e=2147483647&v=beta&t=D9GsPefKoFqXGA8BkQI21vKscZ0ncKY_oO2Wn7_xEz8"
+              alt=""
+              class="featured-craft-pic"
+            />
+          </div>
+          <div class="featured-craft-background">
+            <img
+              src="https://rhythmsofplay.com/wp-content/uploads/2017/03/Flower-Nature-Crafts-sq-e1562004395393.jpg"
+              alt=""
+              class="featured-craft-pic"
+            />
+          </div>
+          <div class="featured-craft-background">
+            <img
+              src="https://hips.hearstapps.com/hmg-prod/images/lavendar-soap-crafts-for-adults-1588272930.jpg?crop=0.668xw:1.00xh;0.179xw,0&resize=980:*"
+              alt=""
+              class="featured-craft-pic"
+            />
+          </div>
         </div>
-        <div class="featured-craft-img-container">
-            <div class="featured-craft-img">
-                <div class="featured-craft-background">
-                    <img src="https://i0.wp.com/ohclary.com/wp-content/uploads/fall-wreath-2.jpg?resize=600%2C603&ssl=1"
-                        alt="" class="featured-craft-pic">
-                </div>
-                <div class="featured-craft-background">
-                    <img src="https://m.media-amazon.com/images/I/81uZp9TmCpL.jpg" alt="" class="featured-craft-pic">
-                </div>
-                <div class="featured-craft-background">
-                    <img src="https://content.prod.lovecrafts.co/lovecrafts/83e8adc2-81bf-4df7-ac58-89729f3cbdf7_Thanksgiving-Table-Paper-Pumpkins.webp?auto=compress,format&rect=0,0,749,498&w=635&h=422"
-                        alt="" class="featured-craft-pic">
-                </div>
-                <div class="featured-craft-background">
-                    <img src="https://media.licdn.com/dms/image/D5612AQH4KOaS-wVWVw/article-cover_image-shrink_600_2000/0/1693632036481?e=2147483647&v=beta&t=D9GsPefKoFqXGA8BkQI21vKscZ0ncKY_oO2Wn7_xEz8"
-                        alt="" class="featured-craft-pic">
-                </div>
-                <div class="featured-craft-background">
-                    <img src="https://rhythmsofplay.com/wp-content/uploads/2017/03/Flower-Nature-Crafts-sq-e1562004395393.jpg"
-                        alt="" class="featured-craft-pic">
-                </div>
-                <div class="featured-craft-background">
-                    <img src="https://hips.hearstapps.com/hmg-prod/images/lavendar-soap-crafts-for-adults-1588272930.jpg?crop=0.668xw:1.00xh;0.179xw,0&resize=980:*"
-                        alt="" class="featured-craft-pic">
-                </div>
-
-            </div>
-        </div>
+      </div>
     </section>
     <footer>
-        <div class="footer-container">
-            <div class="footer-info">
-                <span class="footer-text">About</span>
-            </div>
-            <div class="footer-info">
-                <span class="footer-text">Contact Us</span>
-            </div>
-            <div class="footer-info">
-                <span class="footer-text">Privacy</span>
-            </div>
-            <div class="footer-info" id="app-text">
-                <span class="footer-text">Get The App</span>
-            </div>
+      <div class="footer-container">
+        <div class="footer-info">
+          <span class="footer-text">About</span>
         </div>
+        <div class="footer-info">
+          <span class="footer-text">Contact Us</span>
+        </div>
+        <div class="footer-info">
+          <span class="footer-text">Privacy</span>
+        </div>
+        <div class="footer-info" id="app-text">
+          <span class="footer-text">Get The App</span>
+        </div>
+      </div>
     </footer>
-
-</body>
-
+  </body>
 </html>
